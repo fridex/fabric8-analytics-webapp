@@ -1,0 +1,5 @@
+connexion
+flask_script
+flask_oauthlib
+uwsgi
+sqlalchemy

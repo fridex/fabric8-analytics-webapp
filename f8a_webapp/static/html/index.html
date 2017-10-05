@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<!--[if IE 9]><html lang="en-us" class="ie9 layout-pf layout-pf-fixed"><![endif]-->
+<!--[if gt IE 9]><!-->
+<html lang="en-us" class="layout-pf">
+<!--<![endif]-->
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>fabric8-analytics WebApp</title>
+  <meta name="description" content="PatternFly is an open source web user interface framework promoting consistency and usability across IT applications through UX patterns and widgets">
+  <link rel="shortcut icon" href="http://www.patternfly.org/components/patternfly/dist/img/favicon.ico">
+  <!-- iPad retina icon -->
+  <link rel="apple-touch-icon-precomposed" sizes="152x152" href="http://www.patternfly.org/components/patternfly/dist/img/apple-touch-icon-precomposed-152.png">
+  <!-- iPad retina icon (iOS < 7) -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://www.patternfly.org/components/patternfly/dist/img/apple-touch-icon-precomposed-144.png">
+  <!-- iPad non-retina icon -->
+  <link rel="apple-touch-icon-precomposed" sizes="76x76" href="http://www.patternfly.org/components/patternfly/dist/img/apple-touch-icon-precomposed-76.png">
+  <!-- iPad non-retina icon (iOS < 7) -->
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://www.patternfly.org/components/patternfly/dist/img/apple-touch-icon-precomposed-72.png">
+  <!-- iPhone 6 Plus icon -->
+  <link rel="apple-touch-icon-precomposed" sizes="120x120" href="http://www.patternfly.org/components/patternfly/dist/img/apple-touch-icon-precomposed-180.png">
+  <!-- iPhone retina icon (iOS < 7) -->
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://www.patternfly.org/components/patternfly/dist/img/apple-touch-icon-precomposed-114.png">
+  <!-- iPhone non-retina icon (iOS < 7) -->
+  <link rel="apple-touch-icon-precomposed" sizes="57x57" href="http://www.patternfly.org/components/patternfly/dist/img/apple-touch-icon-precomposed-57.png">
+  <link rel="stylesheet" href="http://www.patternfly.org/assets/css/patternfly-adjusted.min.css">
+  <link rel="stylesheet" href="http://www.patternfly.org/components/patternfly/dist/css/patternfly-additions.min.css">
+  <link rel="stylesheet" href="http://www.patternfly.org/assets/css/patternfly-site.min.css">
+
+
+  <script type="text/javascript">
+    window.IMAGE_PATH = "/assets/img"
+  </script>
+  <script src="http://www.patternfly.org/components/jquery/dist/jquery.min.js"></script>
+  <script src="http://www.patternfly.org/components/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script src="http://www.patternfly.org/components/patternfly-bootstrap-combobox/js/bootstrap-combobox.js"></script>
+  <script src="http://www.patternfly.org/components/bootstrap-datepicker/dist/js/bootstrap-datepicker.js"></script>
+  <script src="http://www.patternfly.org/components/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
+  <script src="http://www.patternfly.org/components/bootstrap-switch/dist/js/bootstrap-switch.min.js"></script>
+  <script src="http://www.patternfly.org/components/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.min.js"></script>
+  <script src="http://www.patternfly.org/components/patternfly-bootstrap-treeview/dist/bootstrap-treeview.min.js"></script>
+  <script src="http://www.patternfly.org/components/d3/d3.min.js"></script>
+  <script src="http://www.patternfly.org/components/c3/c3.min.js"></script>
+  <script src="http://www.patternfly.org/components/datatables/media/js/jquery.dataTables.js"></script>
+  <script src="http://www.patternfly.org/components/google-code-prettify/bin/prettify.min.js"></script>
+  <script src="http://www.patternfly.org/components/clipboard/dist/clipboard.min.js"></script>
+  <script src="http://www.patternfly.org/components/patternfly/dist/js/patternfly.min.js"></script>
+  <script src="http://www.patternfly.org/components/jquery-match-height/dist/jquery.matchHeight-min.js"></script>
+  <script src="http://www.patternfly.org/components/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
+  <script src="http://www.patternfly.org/assets/js/patternfly-site.min.js"></script>
+  <script src="/static/js/index.js"></script>
+  <link rel="canonical" href="http://www.patternfly.org/pattern-library/navigation/horizontal-navigation/horizontal-navigation.html">
+</head>
+  <body class="cards-pf">
+    <nav class="navbar navbar-default navbar-pf" role="navigation">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <!-- TODO: logo -->
+      <a class="navbar-brand" href="/">
+        <img src="/assets/img/brand.svg" alt="fabric8-analytics WebApp" />
+      </a>
+    </div>
+    <div class="collapse navbar-collapse navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-utility">
+        <li class="dropdown">
+          <a class="nav-item-iconic" id="horizontalDropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+            <span title="Help" class="fa pficon-help"></span>
+            <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="horizontalDropdownMenu1">
+            <li><a href="#" id="dropdownHelp">Help</a></li>
+            <li><a href="#" id="dropdownAbout">About</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            <span class="pficon pficon-user"></span>
+            <span id="login-text">Anonymous</span> <b class="caret"></b>
+          </a>
+          <ul class="dropdown-menu">
+            <li>
+              <a href="#" id="logout" class="hidden">Log out</a>
+            </li>
+            <li>
+              <a href="#" id="login">Log in</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-primary" id="menuMain">
+        <li data-toggle="modal" data-target="#requestAnalysesModal">
+          <a href="#" id="menuRequestAnalyses">Request Analyses</a>
+        </li>
+        <li class="active" id="menuBrowse">
+          <a href="#">Browse</a>
+        </li>
+        <li id="menuHelp">
+          <a href="#">Help</a>
+        </li>
+        <li id="menuAbout">
+          <a href="#">About</a>
+        </li>
+        <li id="menuContact">
+          <a href="#">Contact</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <div class="modal fade" id="requestAnalysesModal" tabindex="-1" role="dialog" aria-labelledby="requestAnalysesLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+            <span class="pficon pficon-close"></span>
+          </button>
+          <h4 class="modal-title" id="requestAnalysesLabel">Request Analyses</h4>
+        </div>
+        <div class="modal-body">
+          <form class="form-horizontal">
+            <div class="form-group">
+              <label class="col-sm-3 control-label" for="requestAnalysesType">Type</label>
+              <div class="col-sm-9">
+                <!-- TODO: make this selection dynamic by querying endpoint -->
+                <select id="requestAnalysesType" class="selectpicker">
+                  <option value="package" class="selected">Package Analyses</option>
+                  <option value="project">Project Analyses</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-3 control-label" for="requestAnalysesEcosystem">Ecosystem</label>
+              <div class="col-sm-9">
+                <!-- TODO: make this selection dynamic by querying endpoint -->
+                <select id="requestAnalysesEcosystem" class="selectpicker">
+                  <option value="maven">maven</option>
+                  <option value="npm">npm</option>
+                  <option value="pypi">pypi</option>
+                  <option value="golang">golang</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-3 control-label" for="requestAnalysesName">Name</label>
+              <div class="col-sm-9">
+                <input type="text" id="requestAnalysesName" class="form-control"></div>
+            </div>
+            <div class="form-group" id="requestAnalysesVersionDiv">
+              <label class="col-sm-3 control-label" for="requestAnalysesVersion">Version</label>
+              <div class="col-sm-9">
+                <input type="text" id="requestAnalysesVersion" class="form-control">
+              </div>
+            </div>
+            <div class="form-group hidden" id="requestAnalysesUrlDiv">
+              <label class="col-sm-3 control-label" for="requestPackageAnalysesUrl">URL</label>
+              <div class="col-sm-9">
+                <input type="text" id="requestPackageAnalysesUrl" class="form-control">
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-primary" id="requestAnalyses">Request Analyses</button>
+        </div>
+      </div>
+    </div>
+  </div>
+    <div class="container" id="content">
+    </div>
+  <script>
+    // Initialize Boostrap-select
+    $('.selectpicker').selectpicker();
+  </script>
+  </body>
+</html>

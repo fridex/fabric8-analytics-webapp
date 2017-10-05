@@ -1,0 +1,282 @@
+swagger: "2.0"
+info:
+  title: API for Fabric8 Analytics Webapp
+  version: "0.1"
+basePath: "/api/v1/"
+consumes:
+  - application/json
+produces:
+  - application/json
+securityDefinitions:
+  auth_token:
+    type: "apiKey"
+    name: "auth-token"
+    in: "header"
+
+paths:
+
+  /generate-token:
+    get:
+      tags: [Authentication]
+      operationId: f8a_webapp.api_v1.generate_token
+      summary: Get authentization token for communicating with this service.
+      responses:
+        200:
+          description: Authentization token
+        401:
+          description: No suitable permissions.
+
+  /logout:
+    put:
+      tags: [Authentication]
+      operationId: f8a_webapp.api_v1.logout
+      summary: Clean session.
+      responses:
+        201:
+          description: Successfully logged out
+        401:
+          description: No user logged in
+
+  /authorized:
+    get:
+      tags: [Authentication]
+      operationId: f8a_webapp.api_v1.authorized
+      summary: Authentication redirection.
+      responses:
+        200:
+          description: Successfully authorized
+
+  /liveness:
+    get:
+      tags: [Service settings]
+      operationId: f8a_webapp.api_v1.get_liveness
+      summary: Get job service liveness.
+      responses:
+        200:
+          description: Service is alive
+
+  /readiness:
+    get:
+      tags: [Service settings]
+      operationId: f8a_webapp.api_v1.get_readiness
+      summary: Get job service readiness.
+      responses:
+        200:
+          description: Service is ready
+
+  '/ecosystems':
+    get:
+      tags: [General]
+      operationId: f8a_webapp.api_v1.get_ecosystem_listing
+      summary: List all supported ecosystems.
+      security:
+        - auth_token: []
+      responses:
+        200:
+          description: A list of all supported ecosystems.
+        401:
+          description: No suitable permissions.
+
+  #
+  # Packages
+  #
+
+  '/package/{ecosystem}/{name}/{version}/{analysis}':
+    get:
+      tags: [Packages]
+      operationId: f8a_webapp.api_v1.get_package_analysis
+      summary: Get result of analysis for the given packge.
+      parameters:
+        - $ref: "#/parameters/ecosystem"
+        - $ref: "#/parameters/name"
+        - $ref: "#/parameters/version"
+        - $ref: "#/parameters/analysis"
+      security:
+        - auth_token: []
+      responses:
+        200:
+          description: Analysis resutls for the given package.
+        401:
+          description: No suitable permissions.
+
+  '/package/{ecosystem}/{name}/{version}':
+    get:
+      tags: [Packages]
+      operationId: f8a_webapp.api_v1.get_package_analysis_listing
+      summary: List analyses available for the given package.
+      parameters:
+        - $ref: "#/parameters/ecosystem"
+        - $ref: "#/parameters/name"
+        - $ref: "#/parameters/version"
+      security:
+        - auth_token: []
+      responses:
+        200:
+          description: A list of all available analyses for the given package.
+        401:
+          description: No suitable permissions.
+    post:
+      tags: [Packages]
+      operationId: f8a_webapp.api_v1.post_package_analysis
+      summary: Request analysis for the given package.
+      parameters:
+        - $ref: "#/parameters/ecosystem"
+        - $ref: "#/parameters/name"
+        - $ref: "#/parameters/version"
+        - $ref: "#/parameters/analysis"
+      security:
+        - auth_token: []
+      responses:
+        201:
+          description: New package analysis request scheduled.
+        401:
+          description: No suitable permissions.
+
+  '/package/{ecosystem}/{name}':
+    get:
+      tags: [Packages]
+      operationId: f8a_webapp.api_v1.get_package_version_listing
+      summary: List versions for a package.
+      parameters:
+        - $ref: "#/parameters/ecosystem"
+        - $ref: "#/parameters/name"
+      security:
+        - auth_token: []
+      responses:
+        200:
+          description: List all versions of the given package.
+        401:
+          description: No suitable permissions.
+
+  '/package/{ecosystem}':
+    get:
+      tags: [Packages]
+      operationId: f8a_webapp.api_v1.get_package_listing
+      summary: List packages available in the given ecosystem.
+      parameters:
+        - $ref: "#/parameters/ecosystem"
+        - $ref: "#/parameters/prefix"
+      security:
+        - auth_token: []
+      responses:
+        200:
+          description: List all packages in the given ecosystem.
+        401:
+          description: No suitable permissions.
+
+  #
+  # Projects
+  #
+  '/project/{ecosystem}/{name}/{analysis}':
+    get:
+      tags: [Projects]
+      operationId: f8a_webapp.api_v1.get_project_analysis
+      summary: Get project level analysis result.
+      parameters:
+        - $ref: "#/parameters/ecosystem"
+        - $ref: "#/parameters/name"
+        - $ref: "#/parameters/analysis"
+      security:
+        - auth_token: []
+      responses:
+        200:
+          description: Analysis result for the given project.
+        401:
+          description: No suitable permissions.
+
+  '/project/{ecosystem}/{name}':
+    get:
+      tags: [Projects]
+      operationId: f8a_webapp.api_v1.get_project_analysis_listing
+      summary: Get all analyses available for the given project.
+      parameters:
+        - $ref: "#/parameters/ecosystem"
+        - $ref: "#/parameters/name"
+      security:
+        - auth_token: []
+      responses:
+        200:
+          description: Information about the given package for the given analysis.
+        401:
+          description: No suitable permissions.
+    post:
+      tags: [Projects]
+      operationId: f8a_webapp.api_v1.post_project_analysis
+      summary: Request analysis of the given project analysis.
+      parameters:
+        - $ref: "#/parameters/ecosystem"
+        - $ref: "#/parameters/name"
+        - $ref: "#/parameters/url"
+        - $ref: "#/parameters/analysis"
+      security:
+        - auth_token: []
+      responses:
+        201:
+          description: New project analysis request scheduled.
+        401:
+          description: No suitable permissions.
+
+  '/project/{ecosystem}':
+    get:
+      tags: [Projects]
+      operationId: f8a_webapp.api_v1.get_project_listing
+      summary: Get listing of all projects in the ecosystem.
+      parameters:
+        - $ref: "#/parameters/ecosystem"
+        - $ref: "#/parameters/prefix"
+      security:
+        - auth_token: []
+      responses:
+        200:
+          description: Listing of all projects in the given ecosystem.
+        401:
+          description: No suitable permissions.
+
+
+parameters:
+  ecosystem:
+    name: ecosystem
+    in: path
+    required: true
+    description: Ecosystem identifier
+    type: string
+    items:
+      type: string
+    enum:
+      - maven
+      - npm
+      - pypi
+      - nuget
+      - golang
+  name:
+    name: name
+    in: path
+    required: true
+    description: Package name
+    type: string
+  version:
+    name: version
+    in: path
+    type: string
+    required: true
+    description: Version informtion
+  analysis:
+    name: analysis
+    in: path
+    type: string
+    required: true
+    description: Analysis name to be obtained (can be comma separated list).
+  url:
+    name: url
+    in: query
+    type: string
+    required: false
+    description: 'Project upstream URL (supported: GitHub).'
+  prefix:
+    name: prefix
+    in: query
+    type: string
+    required: false
+    description: Prefix for search searching.
+
+#definitions:
