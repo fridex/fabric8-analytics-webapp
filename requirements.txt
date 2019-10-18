@@ -11,11 +11,11 @@ clickclick==1.2.2         # via connexion
 connexion==1.1.15
 flask-oauthlib==0.9.4
 flask-script==2.0.6
-flask==0.12.2             # via connexion, flask-oauthlib, flask-script
+flask==1.0                # via connexion, flask-oauthlib, flask-script
 idna==2.6                 # via requests
 inflection==0.3.1         # via connexion
 itsdangerous==0.24        # via flask
-jinja2==2.9.6             # via flask
+jinja2==2.10.3            # via flask
 jsonschema==2.6.0         # via connexion, swagger-spec-validator
 markupsafe==1.0           # via jinja2
 oauthlib==2.0.4           # via flask-oauthlib, requests-oauthlib
@@ -27,4 +27,4 @@ sqlalchemy==1.1.14
 swagger-spec-validator==2.1.0  # via connexion
 urllib3==1.22             # via requests
 uwsgi==2.0.15
-werkzeug==0.12.2          # via flask
+werkzeug==0.16.0          # via flask
